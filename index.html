@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Визитка | Ваше Имя</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; background: #f4f7f6; }
+        .card { background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; max-width: 350px; width: 90%; }
+        img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 3px solid #007bff; }
+        h1 { margin: 10px 0; font-size: 1.5rem; color: #333; }
+        p { color: #666; margin-bottom: 1.5rem; }
+        .links { display: flex; flex-direction: column; gap: 10px; }
+        .btn { text-decoration: none; padding: 12px; border-radius: 8px; color: white; font-weight: bold; transition: 0.3s; }
+        .telegram { background: #0088cc; }
+        .whatsapp { background: #25d366; }
+        .email { background: #333; }
+        .btn:hover { opacity: 0.8; transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <!-- Замените ссылку ниже на свое фото или удалите тег img -->
+        <img src="https://placeholder.com" alt="Avatar">
+        <h1>Ваше Имя / Название</h1>
+        <p>Краткое описание того, чем вы занимаетесь. Например: Частный юрист или Разработчик сайтов.</p>
+        
+        <div class="links">
+            <a href="https://t.me" class="btn telegram">Написать в Telegram</a>
+            <a href="https://wa.me" class="btn whatsapp">Написать в WhatsApp</a>
+            <a href="mailto:ваша@почта.com" class="btn email">Отправить Email</a>
+        </div>
+    </div>
+</body>
+</html>
