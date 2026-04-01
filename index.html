@@ -134,6 +134,26 @@
     	   box-shadow: 0 0 8px #00bc8c;
 }
 
+	/* Цвет иконки бургера в темной теме */
+	.navbar-toggler-icon {
+    	   filter: invert(1) brightness(100%) contrast(100%); /* Делаем иконку белой */
+}
+
+	/* Стили для открытого меню на мобильных */
+	@media (max-width: 991px) {
+    	.navbar-collapse {
+           background: #000; /* Фон выпадающего списка */
+           padding: 20px;
+           margin-top: 15px;
+           border-radius: 10px;
+           border: 1px solid #333;
+    }
+    .nav-link {
+        margin: 10px 0; /* Отступы между пунктами в столбик */
+        font-size: 1.1rem;
+    }
+}
+
         /* Контентные блоки */
         .section-title { 
             border-bottom: 2px solid #333; 
@@ -200,20 +220,28 @@
 
     <!-- Навигация -->
     <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand text-white" href="#">
-                <span style="color: #00bc8c;">TRUCK</span>_LOG
-            </a>
-            <div class="collapse navbar-collapse justify-content-end">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="#home">Главная</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#specs">Железо</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#schedule">Стримы</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#links">Контакты</a></li>
-                </ul>
-            </div>
+    <div class="container">
+        <!-- Логотип -->
+        <a class="navbar-brand text-white" href="#">
+            <span style="color: #00bc8c;">TRUCK</span>_LOG
+        </a>
+
+        <!-- Кнопка Бургера (видна только на мобильных) -->
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Обертка меню -->
+        <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="#home">Главная</a></li>
+                <li class="nav-item"><a class="nav-link" href="#specs">Железо</a></li>
+                <li class="nav-item"><a class="nav-link" href="#schedule">Стримы</a></li>
+                <li class="nav-item"><a class="nav-link" href="#links">Контакты</a></li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <!-- Слайдер -->
     <div class="slider-container">
@@ -349,7 +377,7 @@
     container.addEventListener('mouseenter', stopAutoScroll);
     container.addEventListener('mouseleave', startAutoScroll);
 </script>
-
+<script src="https://jsdelivr.net"></script>
 
 </body>
 </html>
