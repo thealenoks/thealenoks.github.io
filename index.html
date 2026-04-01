@@ -14,28 +14,61 @@
             color: #e0e0e0; 
             font-family: 'Segoe UI', Roboto, sans-serif; 
         }
-	/* Убираем маркеры списка в навигации */
+/* 3. ИСПРАВЛЕНИЕ: чтобы меню на мобильных выстраивалось в столбик, а на ПК в ряд */
 	.navbar-nav {
-            list-style: none;
-            display: flex;
-            flex-direction: row;
-            padding: 0;
-            margin: 0;
+           list-style: none;
+           padding: 0;
+           margin: 0;
+           display: flex;
 }
-        .navbar { 
-            background-color: #000; 
-            border-bottom: 2px solid #00bc8c; 
-            padding: 15px 0;
-        }
-        .navbar-brand { font-weight: 800; letter-spacing: 1px; }
-        .nav-link { 
-            color: #fff !important; 
-            font-weight: 600; 
-            text-transform: uppercase; 
-            font-size: 0.9rem;
-            margin-left: 15px;
-        }
-        .nav-link:hover { color: #00bc8c !important; }
+	/* На больших экранах (ПК) - в ряд */
+	@media (min-width: 992px) {
+           .navbar-nav { flex-direction: row; }
+}
+
+	/* На маленьких экранах (ТЕЛЕФОНЫ) - в столбик с отступами */
+	@media (max-width: 991px) {
+    	.navbar-nav { 
+            flex-direction: column; 
+            padding-top: 15px;
+    }
+    .nav-link {
+        margin: 10px 0 !important;
+        margin-left: 0 !important; /* Убираем левый отступ на мобилках */
+    }
+}
+        /* Основная панель */
+.navbar { 
+    background-color: #000 !important; /* Вернул черный вместо тестового красного */
+    border-bottom: 2px solid #00bc8c; 
+    padding: 15px 0;
+}
+
+/* Кнопка бургера */
+.navbar-toggler {
+    border: 1px solid #00bc8c !important; /* Зеленая рамка */
+}
+
+/* ИКОНКА: Самый надежный способ для темной темы */
+.navbar-toggler-icon {
+    /* Эта строка заставляет Bootstrap использовать встроенную СВЕТЛУЮ иконку */
+    filter: invert(1) grayscale(1) brightness(1.5); 
+}
+
+/* Эффект при нажатии */
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.25rem rgba(0, 188, 140, 0.25) !important;
+}
+
+/* Ссылки */
+.nav-link { 
+    color: #fff !important; 
+    font-weight: 600; 
+    text-transform: uppercase; 
+    font-size: 0.9rem;
+    margin-left: 15px;
+}
+.nav-link:hover { color: #00bc8c !important; }
 
         /* --- СЛАЙДЕР НА SCROLL SNAP --- */
         .slider-container {
@@ -377,8 +410,10 @@
     container.addEventListener('mouseenter', stopAutoScroll);
     container.addEventListener('mouseleave', startAutoScroll);
 </script>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.bundle.min.js"</script>
 
 </body>
 </html>
+
+
+
