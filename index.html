@@ -3,32 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Визитка | Ваше Имя</title>
+    <title>Твой Игровой Канал</title>
     <style>
-        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; background: #f4f7f6; }
-        .card { background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; max-width: 350px; width: 90%; }
-        img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 3px solid #007bff; }
-        h1 { margin: 10px 0; font-size: 1.5rem; color: #333; }
-        p { color: #666; margin-bottom: 1.5rem; }
-        .links { display: flex; flex-direction: column; gap: 10px; }
-        .btn { text-decoration: none; padding: 12px; border-radius: 8px; color: white; font-weight: bold; transition: 0.3s; }
-        .telegram { background: #0088cc; }
-        .whatsapp { background: #25d366; }
-        .email { background: #333; }
-        .btn:hover { opacity: 0.8; transform: translateY(-2px); }
+        body { font-family: 'Segoe UI', sans-serif; background: #0f0f0f; color: white; text-align: center; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: auto; }
+        h1 { color: #9146ff; } /* Цвет в стиле Twitch */
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; margin: 20px 0; border: 2px solid #333; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 20px 0; }
+        .btn { padding: 12px 24px; text-decoration: none; color: white; border-radius: 5px; font-weight: bold; transition: 0.3s; }
+        .twitch { background: #9146ff; }
+        .youtube { background: #ff0000; }
+        .discord { background: #5865f2; }
+        .btn:hover { opacity: 0.8; transform: scale(1.05); }
+        .specs { background: #1a1a1a; padding: 20px; border-radius: 10px; text-align: left; }
     </style>
 </head>
 <body>
-    <div class="card">
-        <!-- Замените ссылку ниже на свое фото или удалите тег img -->
-        <img src="https://placeholder.com" alt="Avatar">
-        <h1>Ваше Имя / Название</h1>
-        <p>Краткое описание того, чем вы занимаетесь. Например: Частный юрист или Разработчик сайтов.</p>
-        
+    <div class="container">
+        <h1>Добро пожаловать на мой канал! 🎮</h1>
+        <p>Стримы, гайды и просто ламповый геймплей.</p>
+
+        <!-- Ссылки на соцсети -->
         <div class="links">
-            <a href="https://t.me" class="btn telegram">Написать в Telegram</a>
-            <a href="https://wa.me" class="btn whatsapp">Написать в WhatsApp</a>
-            <a href="mailto:ваша@почта.com" class="btn email">Отправить Email</a>
+            <a href="ССЫЛКА_НА_TWITCH" class="btn twitch" target="_blank">Twitch</a>
+            <a href="ССЫЛКА_НА_YOUTUBE" class="btn youtube" target="_blank">YouTube</a>
+            <a href="ССЫЛКА_НА_DISCORD" class="btn discord" target="_blank">Discord</a>
+        </div>
+
+        <!-- Окно со стримом или последним видео -->
+        <div class="video-container">
+            <!-- Пример для YouTube. Для Twitch используй их Embed код -->
+            <iframe src="https://youtube.com" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <!-- Мой ПК -->
+        <div class="specs">
+            <h3>Мой Setup 🛠️</h3>
+            <ul>
+                <li><strong>CPU:</strong> Intel Core i7-12700K</li>
+                <li><strong>GPU:</strong> NVIDIA RTX 3080</li>
+                <li><strong>RAM:</strong> 32GB DDR4</li>
+                <li><strong>Мышь:</strong> Logitech G Pro Wireless</li>
+            </ul>
         </div>
     </div>
 </body>
