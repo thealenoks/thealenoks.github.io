@@ -86,7 +86,7 @@
 .navbar-toggler[aria-expanded="true"],
 .navbar-toggler[aria-expanded="true"]:hover {
     border-color: #ffdf00 !important; 
-    box-shadow: 0 0 12px rgba(0, 188, 140, 0.6) !important;
+    box-shadow: 0 0 12px rgba(255, 223, 0, 0.6) !important;
 }
 
 /* Ссылки */
@@ -268,6 +268,23 @@
             background: #333; 
             box-shadow: inset 0 0 10px #ffdf00;
         }
+
+	/* Создаем собственный стиль для кнопки подписки */
+	.btn-outline-success {
+    	    color: #ffdf00 !important;             /* Яркий основной текст */
+    	    border-color: #ffdf00 !important;      /* Яркая рамка */
+            background-color: transparent !important;
+            text-transform: uppercase;             /* Все заглавные */
+            letter-spacing: 1px;                   /* Небольшой отступ между буквами */
+            transition: 0.3s all ease !important;
+}
+
+	/* Эффект при наведении */
+	.btn-outline-success:hover {
+           background-color: #ffdf00 !important;  /* Заливка при наведении */
+           color: #000 !important;                /* Черный текст на зеленом фоне */
+           box-shadow: 0 0 20px rgba(0, 188, 140, 0.4) !important; /* Свечение */
+}
 
         footer {
             padding: 30px 0;
