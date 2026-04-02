@@ -21,6 +21,18 @@
 		.content-wrapper {
     flex: 1 0 auto;
 }
+
+.nav-logo {
+    height: 40px;      /* Подбери высоту под свою панель */
+    width: auto;       /* Ширина подстроится автоматически (сохранит пропорции) */
+    display: block;
+    transition: 0.3s;
+}
+
+.nav-logo:hover {
+    filter: drop-shadow(0 0 8px #ffdf00); /* Легкое свечение при наведении */
+}
+
 /* 3. ИСПРАВЛЕНИЕ: чтобы меню на мобильных выстраивалось в столбик, а на ПК в ряд */
 	.navbar-nav {
            list-style: none;
@@ -301,9 +313,9 @@
     <nav class="navbar navbar-expand-lg">
     <div class="container">
         <!-- Логотип -->
-        <a class="navbar-brand text-white" href="#">
-            <span style="color: #ffdf00;">TRUCK</span>_LOG
-        </a>
+<a class="navbar-brand" href="#">
+    <img src="images/logo.png" alt="TRUCK_LOG" class="nav-logo">
+</a>
 
         <!-- Кнопка Бургера (видна только на мобильных) -->
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -395,7 +407,7 @@
 </div>
     <footer class="text-center text-muted">
         <div class="container">
-            <p class="mb-1">© 2024 TRUCK_LOG Gaming. Все права защищены.</p>
+            <p class="mb-1">© 2026 Alenoks. Все права защищены.</p>
             <small>Технологии: Bootstrap 5 & CSS Scroll Snap</small>
         </div>
     </footer>
