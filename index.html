@@ -13,7 +13,14 @@
             background-color: #0f0f0f; 
             color: #e0e0e0; 
             font-family: 'Segoe UI', Roboto, sans-serif; 
+			display: flex;
+    		flex-direction: column;
+    		min-height: 100vh; /* Высота во весь экран */
+    		margin: 0;
         }
+		.content-wrapper {
+    flex: 1 0 auto;
+}
 /* 3. ИСПРАВЛЕНИЕ: чтобы меню на мобильных выстраивалось в столбик, а на ПК в ряд */
 	.navbar-nav {
            list-style: none;
@@ -263,11 +270,11 @@
         }
 
         footer {
-            margin-top: 60px;
             padding: 30px 0;
             background: #000;
             border-top: 1px solid #222;
             font-size: 0.85rem;
+			flex-shrink: 0; /* Чтобы футер не сжимался */
         }
     </style>
 </head>
@@ -297,7 +304,7 @@
         </div>
     </div>
 </nav>
-
+<div class="content-wrapper">
     <!-- Слайдер -->
     <div class="slider-container">
         <div class="scroll-slider">
@@ -368,7 +375,7 @@
             </div>
         </div>
     </div>
-
+</div>
     <footer class="text-center text-muted">
         <div class="container">
             <p class="mb-1">© 2024 TRUCK_LOG Gaming. Все права защищены.</p>
