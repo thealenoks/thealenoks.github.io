@@ -51,20 +51,33 @@
     padding: 15px 0;
 }
 
-/* Кнопка бургера */
-.navbar-toggler {
-    border: 1px solid #00bc8c !important; /* Зеленая рамка */
-}
 
 /* ИКОНКА: Самый надежный способ для темной темы */
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
 }
-/* Эффект при нажатии */
-.navbar-toggler:focus {
-    box-shadow: 0 0 0 0.25rem rgba(0, 188, 140, 0.25) !important;
+/* 1. Находим и полностью ПЕРЕЗАПИСЫВАЕМ стили кнопки */
+.navbar-toggler {
+    border: 1px solid #333 !important; /* Серый контур в покое */
+    box-shadow: none !important;        /* Убираем свечение навсегда для покоя */
+    outline: none !important;
+    transition: 0.3s ease;
 }
 
+/* 2. Убираем синее/зеленое свечение при фокусе (клике) */
+.navbar-toggler:focus, 
+.navbar-toggler:active {
+    box-shadow: none !important;
+    outline: none !important;
+    border-color: #333 !important;
+}
+
+/* 3. А теперь включаем свечение ТОЛЬКО при открытом меню */
+/* Bootstrap убирает класс .collapsed у ОТКРЫТОЙ кнопки */
+.navbar-toggler:not(.collapsed) {
+    border-color: #00bc8c !important; /* Зеленая рамка */
+    box-shadow: 0 0 12px rgba(0, 188, 140, 0.6) !important; /* Твое свечение */
+}
 /* Ссылки */
 .nav-link { 
     color: #fff !important; 
@@ -265,7 +278,7 @@
         </a>
 
         <!-- Кнопка Бургера (видна только на мобильных) -->
-        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" onfocus="this.blur()" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -419,5 +432,3 @@
 
 </body>
 </html>
-
-
