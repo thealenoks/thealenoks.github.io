@@ -270,7 +270,7 @@
         /* Стили для заголовка видео внутри карточки */
 		.video-card h4 {
     		margin: 10px 0 0; 
-    		font-size: 1rem; /* Сделал шрифт чуть крупнее для высокой карточки */ 
+    		font-size: 0.9rem; /* Сделал шрифт чуть крупнее для высокой карточки */ 
     		color: #fff; 
     		line-height: 1.4;
     		transition: 0.3s;
@@ -387,17 +387,25 @@
     </div>
 
     <!-- Контент -->
-    <div class="container mt-2">
-        <div class="row">
-            <!-- Секция Видео -->
-            <div class="col-lg-8">
-    <h3 class="section-title">Последние прохождения</h3>
-    <!-- ID переносим прямо на row, чтобы колонки встали в ряд -->
-    <div class="row" id="youtube-feed">
-        Загрузка...
-    </div>
-</div>
-            <!-- Секция Instagram -->
+<div class="container mt-2">
+    <div class="row">
+        <!-- Секция Видео -->
+        <div class="col-lg-8">
+            <h3 class="section-title">Последние прохождения</h3>
+            
+            <!-- Сетка с видео -->
+            <div class="row" id="youtube-feed">
+                Загрузка...
+            </div>
+
+               <div class="text-center mt-0 mb-5">
+                <a href="#" class="btn btn-outline-success fw-bold py-2 px-4">
+                    ПОДПИСАТЬСЯ НА YOUTUBE
+                </a>
+            </div>
+        </div> 
+
+        <!-- Секция Instagram -->
             <div class="col-lg-4">
                 <h3 class="section-title">Instagram Feed</h3>
                 <div class="insta-grid">
@@ -408,8 +416,8 @@
                     <div class="insta-item"></div>
                     <div class="insta-item"></div>
                 </div>
-                <div class="mt-4">
-                    <a href="#" class="btn btn-outline-success w-100 fw-bold py-2">ПОДПИСАТЬСЯ НА КАНАЛ</a>
+                <div class="text-center mt-4 mb-5">
+                    <a href="#" class="btn btn-outline-success fw-bold py-2 px-4">ПОДПИСАТЬСЯ НА INSTAGRAM</a>
                 </div>
             </div>
         </div>
@@ -526,7 +534,7 @@ const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.y
                 
                 // Каждое видео оборачиваем в col-md-6 (это даст 2 видео в ряд)
                 html += `
-    <div class="col-md-6 mb-3">
+    <div class="col-md-6 mb-1">
         <div class="video-card">
             <iframe width="100%" height="200" 
                 src="${embedUrl}" 
