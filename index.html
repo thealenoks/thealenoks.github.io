@@ -486,6 +486,8 @@
     const container = document.querySelector('.slider-container');
     container.addEventListener('mouseenter', stopAutoScroll);
     container.addEventListener('mouseleave', startAutoScroll);
+	container.addEventListener('touchstart', stopAutoScroll);
+    container.addEventListener('touchend', startAutoScroll);
 
     // Автофокус в поле поиска при открытии окна
     const searchModal = document.getElementById('searchModal');
