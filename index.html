@@ -24,104 +24,101 @@
     		margin: 0;
         }
 		.content-wrapper {
-    flex: 1 0 auto;
-}
+    		flex: 1 0 auto;
+		}
 
-.nav-logo {
-    height: 70px;      /* Подбери высоту под свою панель */
-    width: auto;       /* Ширина подстроится автоматически (сохранит пропорции) */
-    display: block;
-    transition: 0.3s;
-}
+		.nav-logo {
+    		height: 70px;      /* Подбери высоту под свою панель */
+    		width: auto;       /* Ширина подстроится автоматически (сохранит пропорции) */
+    		display: block;
+    		transition: 0.3s;
+		}
 
-.nav-logo:hover {
-    filter: drop-shadow(0 0 8px #ffdf00); /* Легкое свечение при наведении */
-}
+		.nav-logo:hover {
+    	filter: drop-shadow(0 0 8px #ffdf00); /* Легкое свечение при наведении */
+		}
 
-/* 3. ИСПРАВЛЕНИЕ: чтобы меню на мобильных выстраивалось в столбик, а на ПК в ряд */
-	.navbar-nav {
-           list-style: none;
-           padding: 0;
-           margin: 0;
-           display: flex;
-}
-	/* На больших экранах (ПК) - в ряд */
-	@media (min-width: 992px) {
+		/* 3. ИСПРАВЛЕНИЕ: чтобы меню на мобильных выстраивалось в столбик, а на ПК в ряд */
+		.navbar-nav {
+    		list-style: none;
+    		padding: 0;
+			margin: 0;
+    		display: flex;
+		}
+		
+		/* На больших экранах (ПК) - в ряд */
+		@media (min-width: 992px) {
            .navbar-nav { flex-direction: row; }
-}
+		}
 
-	/* На маленьких экранах (ТЕЛЕФОНЫ) - в столбик с отступами */
-	@media (max-width: 991px) {
-    .navbar-collapse {
-        background: #111; /* Чуть светлее основного фона для объема */
-        border: 1px solid #333;
-        border-radius: 12px;
-        margin-top: 10px;
-        padding: 15px;
-    }
-    .nav-link {
-        border-bottom: 1px solid #222; /* Разделительные линии */
-        padding: 12px 0 !important;
-        margin: 0 !important;
-    }
-    .nav-link:last-child {
-        border-bottom: none; /* Убираем линию у последнего пункта */
-    }
+		/* На маленьких экранах (ТЕЛЕФОНЫ) - в столбик с отступами */
+		@media (max-width: 991px) {
+    		.navbar-collapse {
+        		background: #111; /* Чуть светлее основного фона для объема */
+        		border: 1px solid #333;
+        		border-radius: 12px;
+        		margin-top: 10px;
+        		padding: 15px;
+    		}
+    		.nav-link {
+        		border-bottom: 1px solid #222; /* Разделительные линии */
+        		padding: 12px 0 !important;
+        		margin: 0 !important;
+    		}
+    		.nav-link:last-child { border-bottom: none;} /* Убираем линию у последнего пункта */
 }
         /* Основная панель */
-.navbar { 
-    background-color: #000 !important; /* Вернул черный вместо тестового красного */
-    border-bottom: 2px solid #ffdf00; 
-    padding: 15px 0;
-}
-.search-trigger {
-    cursor: pointer;
-    transition: 0.3s;
-}
-.search-trigger:hover svg {
-    fill: #ffdf00 !important;
-    filter: drop-shadow(0 0 5px rgba(255, 223, 0, 0.5));
-}
+		.navbar { 
+    		background-color: #000 !important; /* Вернул черный вместо тестового красного */
+    		border-bottom: 2px solid #ffdf00; 
+    		padding: 15px 0;
+		}
+		.search-trigger {
+    		cursor: pointer;
+    		transition: 0.3s;
+		}
+		.search-trigger:hover svg {
+    		fill: #ffdf00 !important;
+    		filter: drop-shadow(0 0 5px rgba(255, 223, 0, 0.5));
+		}
 
-/* ИКОНКА: Самый надежный способ для темной темы */
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
-}
-/* 1. Базовое состояние (после загрузки / закрыто) */
-.navbar-toggler {
-    border: 1px solid #333 !important;
-    box-shadow: none !important;
-    outline: none !important;
-    transition: 0.3s ease;
-}
+		/* ИКОНКА: Самый надежный способ для темной темы */
+		.navbar-toggler-icon {
+    		background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
+		}
+		/* 1. Базовое состояние (после загрузки / закрыто) */
+		.navbar-toggler {
+    		border: 1px solid #333 !important;
+    		box-shadow: none !important;
+    		outline: none !important;
+    		transition: 0.3s ease;
+		}
 
-/* 2. Состояние при наведении, НО только если меню ЗАКРЫТО (не активно) */
-.navbar-toggler:hover {
-    border-color: #555 !important; /* Чуть светлее серого */
-}
+		/* 2. Состояние при наведении, НО только если меню ЗАКРЫТО (не активно) */
+		.navbar-toggler:hover {border-color: #555 !important;} /* Чуть светлее серого */
 
-/* 3. Убираем стандартный синий фокус Bootstrap */
-.navbar-toggler:focus {
-    box-shadow: none !important;
-}
+		/* 3. Убираем стандартный синий фокус Bootstrap */
+		.navbar-toggler:focus {
+    		box-shadow: none !important;
+		}
 
-/* 4. СОСТОЯНИЕ КОГДА МЕНЮ ОТКРЫТО (и при наведении на открытое тоже) */
-/* Добавляем :hover в связку, чтобы он не перебивал зеленый цвет */
-.navbar-toggler[aria-expanded="true"],
-.navbar-toggler[aria-expanded="true"]:hover {
-    border-color: #ffdf00 !important; 
-    box-shadow: 0 0 12px rgba(255, 223, 0, 0.6) !important;
-}
+		/* 4. СОСТОЯНИЕ КОГДА МЕНЮ ОТКРЫТО (и при наведении на открытое тоже) */
+		/* Добавляем :hover в связку, чтобы он не перебивал зеленый цвет */
+		.navbar-toggler[aria-expanded="true"],
+		.navbar-toggler[aria-expanded="true"]:hover {
+    		border-color: #ffdf00 !important; 
+    		box-shadow: 0 0 12px rgba(255, 223, 0, 0.6) !important;
+		}
 
-/* Ссылки */
-.nav-link { 
-    color: #fff !important; 
-    font-weight: 600; 
-    text-transform: uppercase; 
-    font-size: 0.9rem;
-    margin-left: 15px;
-}
-.nav-link:hover { color: #ffdf00 !important; }
+		/* Ссылки */
+		.nav-link { 
+    		color: #fff !important; 
+    		font-weight: 600; 
+    		text-transform: uppercase; 
+    		font-size: 0.9rem;
+    		margin-left: 15px;
+		}
+		.nav-link:hover {color: #ffdf00 !important;}
 
         /* --- СЛАЙДЕР НА SCROLL SNAP --- */
         .slider-container {
@@ -192,13 +189,13 @@
             border: 1px solid rgba(0,0,0,0.5);
         }
         /* Активная точка */
-	.slider-nav a.active {
+		.slider-nav a.active {
     	    background-color: #ffdf00;
             transform: scale(1.4);
             box-shadow: 0 0 8px #ffdf00;
-}
+		}
 
-	.slider-nav a {
+		.slider-nav a {
     	    width: 12px;
             height: 12px;
             background-color: rgba(255, 255, 255, 0.4);
@@ -206,39 +203,37 @@
             transition: 0.3s;
             border: 1px solid rgba(0,0,0,0.5);
             outline: none; /* Убираем синюю рамку в некоторых браузерах */
-}
+		}
 
-	.slider-nav a:hover {
+		.slider-nav a:hover {
             background-color: #ffdf00;
             transform: scale(1.3);
-}
+		}
 
-	/* Оставляем только этот класс для подсветки */
-	.slider-nav a.active {
+		/* Оставляем только этот класс для подсветки */
+		.slider-nav a.active {
     	   background-color: #ffdf00;
     	   transform: scale(1.4);
     	   box-shadow: 0 0 8px #ffdf00;
-}
+		}
 
-	/* Цвет иконки бургера в темной теме */
-	.navbar-toggler-icon {
-	fill: white;
-}
+		/* Цвет иконки бургера в темной теме */
+		.navbar-toggler-icon { fill: white; }
 
-	/* Стили для открытого меню на мобильных */
-	@media (max-width: 991px) {
-    	.navbar-collapse {
-           background: #000; /* Фон выпадающего списка */
-           padding: 20px;
-           margin-top: 15px;
-           border-radius: 10px;
-           border: 1px solid #333;
-    }
-    .nav-link {
-        margin: 10px 0; /* Отступы между пунктами в столбик */
-        font-size: 1.1rem;
-    }
-}
+		/* Стили для открытого меню на мобильных */
+		@media (max-width: 991px) {
+    		.navbar-collapse {
+				background: #000; /* Фон выпадающего списка */
+           		padding: 20px;
+           		margin-top: 15px;
+           		border-radius: 10px;
+           		border: 1px solid #333;
+    		}
+    		.nav-link {
+        		margin: 10px 0; /* Отступы между пунктами в столбик */
+        		font-size: 1.1rem;
+    		}
+		}
 
         /* Контентные блоки */
         .section-title { 
@@ -252,28 +247,41 @@
         }
         
         .video-card { 
-            background: #1a1a1a; 
-            border: 1px solid #333; 
-            margin-bottom: 20px; 
-            border-radius: 10px; 
-            overflow: hidden; 
-            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .video-card:hover { 
-            transform: translateY(-8px); 
-            border-color: #ffdf00; 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-        }
+    		background: #1a1a1a; 
+    		border: 1px solid #333; 
+    		margin-bottom: 20px; 
+    		border-radius: 10px; 
+    		overflow: hidden; 
+    		padding: 10px; /* Добавили внутренний отступ из скрипта */
+    		transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    		/* Добавляем фиксированную минимальную высоту */
+    		min-height: 274px;
+    		/* Чтобы заголовок всегда был прижат к плееру или распределялся красиво */
+    		display: flex;
+    		flex-direction: column;
+		}
+
+		.video-card:hover { 
+    		transform: translateY(-8px); 
+    		border-color: #ffdf00; /* Тот самый золотой цвет */
+    		box-shadow: 0 10px 20px rgba(255, 223, 0, 0.2); /* Золотистое свечение */
+		}
         
-        .video-placeholder { 
-            background: #000; 
-            height: 180px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-size: 3rem;
-            color: #ffdf00;
-        }
+        /* Стили для заголовка видео внутри карточки */
+		.video-card h4 {
+    		margin: 10px 0 0; 
+    		font-size: 1rem; /* Сделал шрифт чуть крупнее для высокой карточки */ 
+    		color: #fff; 
+    		line-height: 1.4;
+    		transition: 0.3s;
+		}
+
+		.video-card:hover h4 { color: #ffdf00; } /* Заголовок тоже подсветим золотом при наведении */
+
+		.video-card iframe {
+    		border-radius: 5px;
+    		display: block; 
+		}
         
         .insta-grid {
             display: grid;
@@ -293,22 +301,22 @@
             box-shadow: inset 0 0 10px #ffdf00;
         }
 
-	/* Создаем собственный стиль для кнопки подписки */
-	.btn-outline-success {
+		/* Создаем собственный стиль для кнопки подписки */
+		.btn-outline-success {
     	    color: #ffdf00 !important;             /* Яркий основной текст */
     	    border-color: #ffdf00 !important;      /* Яркая рамка */
             background-color: transparent !important;
             text-transform: uppercase;             /* Все заглавные */
             letter-spacing: 1px;                   /* Небольшой отступ между буквами */
             transition: 0.3s all ease !important;
-}
+		}
 
-	/* Эффект при наведении */
-	.btn-outline-success:hover {
+		/* Эффект при наведении */
+		.btn-outline-success:hover {
            background-color: #ffdf00 !important;  /* Заливка при наведении */
            color: #000 !important;                /* Черный текст на зеленом фоне */
            box-shadow: 0 0 20px rgba(0, 188, 140, 0.4) !important; /* Свечение */
-}
+		}
 
         footer {
             padding: 30px 0;
@@ -324,10 +332,10 @@
     <!-- Навигация -->
     <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <!-- Логотип -->
-<a class="navbar-brand" href="#">
-    <img src="images/logo.png" alt="TRUCK_LOG" class="nav-logo">
-</a>
+    <!-- Логотип -->
+	<a class="navbar-brand" href="#">
+    	<img src="images/logo.png" alt="TRUCK_LOG" class="nav-logo">
+	</a>
 
         <!-- Кнопка Бургера (видна только на мобильных) -->
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -518,17 +526,15 @@ const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.y
                 
                 // Каждое видео оборачиваем в col-md-6 (это даст 2 видео в ряд)
                 html += `
-                    <div class="col-md-6 mb-3">
-                        <div class="video-card" style="border: 1px solid #333; padding: 10px; border-radius: 8px; background: #1a1a1a;">
-                            <iframe width="100%" height="200" 
-                                src="${embedUrl}" 
-                                frameborder="0" allowfullscreen style="border-radius: 5px;">
-                            </iframe>
-                            <h4 style="margin: 10px 0 0; font-size: 14px; color: #fff; line-height: 1.4;">
-                                ${item.title}
-                            </h4>
-                        </div>
-                    </div>`;
+    <div class="col-md-6 mb-3">
+        <div class="video-card">
+            <iframe width="100%" height="200" 
+                src="${embedUrl}" 
+                frameborder="0" allowfullscreen>
+            </iframe>
+            <h4>${item.title}</h4>
+        </div>
+    </div>`;
             });
             container.innerHTML = html;
         }
@@ -536,6 +542,4 @@ const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.y
     .catch(err => console.error('Ошибка:', err.message));
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.bundle.min.js"></script>
-
-
 </html>
