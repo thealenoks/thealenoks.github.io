@@ -383,29 +383,12 @@
         <div class="row">
             <!-- Секция Видео -->
             <div class="col-lg-8">
-                <h3 class="section-title">Последние прохождения</h3>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="video-card">
-                            <div class="video-placeholder">▶</div>
-                            <div class="p-3">
-                                <div class="fw-bold mb-1">Груз в Техас: Полный отчет</div>
-                                <div class="text-muted small">ATS • 24.03.2024</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="video-card">
-                            <div class="video-placeholder">▶</div>
-                            <div class="p-3">
-                                <div class="fw-bold mb-1">Сборка модов на графику v2.0</div>
-                                <div class="text-muted small">ETS 2 • 20.03.2024</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+    <h3 class="section-title">Последние прохождения</h3>
+    <!-- ID переносим прямо на row, чтобы колонки встали в ряд -->
+    <div class="row" id="youtube-feed">
+        Загрузка...
+    </div>
+</div>
             <!-- Секция Instagram -->
             <div class="col-lg-4">
                 <h3 class="section-title">Instagram Feed</h3>
@@ -430,6 +413,31 @@
             <small>Технологии: Bootstrap 5 & CSS Scroll Snap</small>
         </div>
     </footer>
+
+<!-- Модальное окно поиска -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="background: #111; border: 1px solid #ffdf00; border-radius: 15px;">
+            <div class="modal-body p-4">
+                <form action="/search" method="GET">
+                    <div class="input-group">
+                        <input type="text" class="form-control border-0 bg-transparent text-white shadow-none" 
+                               placeholder="Что ищем?..." style="font-size: 1.2rem;">
+						<!-- Кнопка пока отключена -->
+                        <button class="btn border-0 text-warning" type="submit" disabled style="opacity: 0.5; cursor: not-allowed;">
+    						<svg xmlns="http://w3.org" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+        						<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+    						</svg>
+						</button>
+                    </div>
+                    <div style="height: 1px; background: linear-gradient(90deg, transparent, #ffdf00, transparent); margin-top: 5px;"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
 
 <script>
     const slider = document.querySelector('.scroll-slider');
@@ -494,31 +502,40 @@
     searchModal.addEventListener('shown.bs.modal', () => {
     searchModal.querySelector('input').focus();
 });
+
+const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.youtube.com%2Ffeeds%2Fvideos.xml%3Fchannel_id%3DUCEEOqyw2t3iozjRkAXI07UA`
+
+    fetch(apiUrl)
+    .then(res => res.json())
+    .then(data => {
+        const container = document.getElementById('youtube-feed');
+        if (data.status === 'ok' && data.items) {
+            let html = '';
+            // Берем 2 последних видео
+            data.items.slice(0, 2).forEach(item => {
+                const videoId = item.guid.split(':').pop();
+                const embedUrl = `https://youtube.com/embed/${videoId}`;
+                
+                // Каждое видео оборачиваем в col-md-6 (это даст 2 видео в ряд)
+                html += `
+                    <div class="col-md-6 mb-3">
+                        <div class="video-card" style="border: 1px solid #333; padding: 10px; border-radius: 8px; background: #1a1a1a;">
+                            <iframe width="100%" height="200" 
+                                src="${embedUrl}" 
+                                frameborder="0" allowfullscreen style="border-radius: 5px;">
+                            </iframe>
+                            <h4 style="margin: 10px 0 0; font-size: 14px; color: #fff; line-height: 1.4;">
+                                ${item.title}
+                            </h4>
+                        </div>
+                    </div>`;
+            });
+            container.innerHTML = html;
+        }
+    })
+    .catch(err => console.error('Ошибка:', err.message));
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Модальное окно поиска -->
-<div class="modal fade" id="searchModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content" style="background: #111; border: 1px solid #ffdf00; border-radius: 15px;">
-            <div class="modal-body p-4">
-                <form action="/search" method="GET">
-                    <div class="input-group">
-                        <input type="text" class="form-control border-0 bg-transparent text-white shadow-none" 
-                               placeholder="Что ищем?..." style="font-size: 1.2rem;">
-						<!-- Кнопка пока отключена -->
-                        <button class="btn border-0 text-warning" type="submit" disabled style="opacity: 0.5; cursor: not-allowed;">
-    						<svg xmlns="http://w3.org" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-        						<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-    						</svg>
-						</button>
-                    </div>
-                    <div style="height: 1px; background: linear-gradient(90deg, transparent, #ffdf00, transparent); margin-top: 5px;"></div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
-</body>
 </html>
