@@ -1,124 +1,152 @@
 <!DOCTYPE html>
 <html lang="ru" data-bs-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-	<!-- Для файла формата .png (рекомендуется) -->
-	<link rel="icon" href="images/favicon.png" type="image/png">
-	<link rel="apple-touch-icon" href="images/favicon.png">
-    
-	<title>Alenoks – автор контента для Twitch и YouTube</title>
-    
+
+    <!-- Для файла формата .png (рекомендуется) -->
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+
+    <title>Alenoks – автор контента для Twitch и YouTube</title>
+
     <!-- Подключаем Bootstrap для сетки -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* Базовые стили темы */
-        body { 
-            background-color: #0f0f0f; 
-            color: #e0e0e0; 
-            font-family: 'Segoe UI', Roboto, sans-serif; 
-			display: flex;
-    		flex-direction: column;
-    		min-height: 100vh; /* Высота во весь экран */
-    		margin: 0;
+        body {
+            background-color: #0f0f0f;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            /* Высота во весь экран */
+            margin: 0;
         }
-		.content-wrapper {
-    		flex: 1 0 auto;
-		}
 
-		.nav-logo {
-    		height: 60px;      /* Подбери высоту под свою панель */
-    		width: auto;       /* Ширина подстроится автоматически (сохранит пропорции) */
-    		display: block;
-    		transition: 0.3s;
-		}
+        .content-wrapper {
+            flex: 1 0 auto;
+        }
 
-		.nav-logo:hover {
-    	filter: drop-shadow(0 0 8px #ffdf00); /* Легкое свечение при наведении */
-		}
+        .nav-logo {
+            height: 60px;
+            /* Подбери высоту под свою панель */
+            width: auto;
+            /* Ширина подстроится автоматически (сохранит пропорции) */
+            display: block;
+            transition: 0.3s;
+        }
 
-		/* 3. ИСПРАВЛЕНИЕ: чтобы меню на мобильных выстраивалось в столбик, а на ПК в ряд */
-		.navbar-nav {
-    		list-style: none;
-    		padding: 0;
-			margin: 0;
-    		display: flex;
-		}
-		
-		/* На больших экранах (ПК) - в ряд */
-		@media (min-width: 992px) {
-           .navbar-nav { flex-direction: row; }
-		}
+        .nav-logo:hover {
+            filter: drop-shadow(0 0 8px #ffdf00);
+            /* Легкое свечение при наведении */
+        }
 
-		/* На маленьких экранах (ТЕЛЕФОНЫ) - в столбик с отступами */
-		@media (max-width: 991px) {
-    		.navbar-collapse {
-        		background: #111; /* Чуть светлее основного фона для объема */
-        		border: 1px solid #333;
-        		border-radius: 12px;
-        		margin-top: 10px;
-        		padding: 15px;
-    		}
-    		.nav-link {
-        		border-bottom: 1px solid #222; /* Разделительные линии */
-        		padding: 12px 0 !important;
-        		margin: 0 !important;
-    		}
-    		.nav-link:last-child { border-bottom: none;} /* Убираем линию у последнего пункта */
-}
+        /* 3. ИСПРАВЛЕНИЕ: чтобы меню на мобильных выстраивалось в столбик, а на ПК в ряд */
+        .navbar-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        /* На больших экранах (ПК) - в ряд */
+        @media (min-width: 992px) {
+            .navbar-nav {
+                flex-direction: row;
+            }
+        }
+
+        /* На маленьких экранах (ТЕЛЕФОНЫ) - в столбик с отступами */
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background: #111;
+                /* Чуть светлее основного фона для объема */
+                border: 1px solid #333;
+                border-radius: 12px;
+                margin-top: 10px;
+                padding: 15px;
+            }
+
+            .nav-link {
+                border-bottom: 1px solid #222;
+                /* Разделительные линии */
+                padding: 12px 0 !important;
+                margin: 0 !important;
+            }
+
+            .nav-link:last-child {
+                border-bottom: none;
+            }
+
+            /* Убираем линию у последнего пункта */
+        }
+
         /* Основная панель */
-		.navbar { 
-    		background-color: #000 !important; /* Вернул черный вместо тестового красного */
-    		border-bottom: 2px solid #ffdf00; 
-    		padding: 15px 0;
-		}
-		.search-trigger {
-    		cursor: pointer;
-    		transition: 0.3s;
-		}
-		.search-trigger:hover svg {
-    		fill: #ffdf00 !important;
-    		filter: drop-shadow(0 0 5px rgba(255, 223, 0, 0.5));
-		}
+        .navbar {
+            background-color: #000 !important;
+            /* Вернул черный вместо тестового красного */
+            border-bottom: 2px solid #ffdf00;
+            padding: 15px 0;
+        }
 
-		/* ИКОНКА: Самый надежный способ для темной темы */
-		.navbar-toggler-icon {
-    		background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
-		}
-		/* 1. Базовое состояние (после загрузки / закрыто) */
-		.navbar-toggler {
-    		border: 1px solid #333 !important;
-    		box-shadow: none !important;
-    		outline: none !important;
-    		transition: 0.3s ease;
-		}
+        .search-trigger {
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-		/* 2. Состояние при наведении, НО только если меню ЗАКРЫТО (не активно) */
-		.navbar-toggler:hover {border-color: #555 !important;} /* Чуть светлее серого */
+        .search-trigger:hover svg {
+            fill: #ffdf00 !important;
+            filter: drop-shadow(0 0 5px rgba(255, 223, 0, 0.5));
+        }
 
-		/* 3. Убираем стандартный синий фокус Bootstrap */
-		.navbar-toggler:focus {
-    		box-shadow: none !important;
-		}
+        /* ИКОНКА: Самый надежный способ для темной темы */
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
+        }
 
-		/* 4. СОСТОЯНИЕ КОГДА МЕНЮ ОТКРЫТО (и при наведении на открытое тоже) */
-		/* Добавляем :hover в связку, чтобы он не перебивал зеленый цвет */
-		.navbar-toggler[aria-expanded="true"],
-		.navbar-toggler[aria-expanded="true"]:hover {
-    		border-color: #ffdf00 !important; 
-    		box-shadow: 0 0 12px rgba(255, 223, 0, 0.6) !important;
-		}
+        /* 1. Базовое состояние (после загрузки / закрыто) */
+        .navbar-toggler {
+            border: 1px solid #333 !important;
+            box-shadow: none !important;
+            outline: none !important;
+            transition: 0.3s ease;
+        }
 
-		/* Ссылки */
-		.nav-link { 
-    		color: #fff !important; 
-    		font-weight: 600; 
-    		text-transform: uppercase; 
-    		font-size: 0.9rem;
-    		margin-left: 15px;
-		}
-		.nav-link:hover {color: #ffdf00 !important;}
+        /* 2. Состояние при наведении, НО только если меню ЗАКРЫТО (не активно) */
+        .navbar-toggler:hover {
+            border-color: #555 !important;
+        }
+
+        /* Чуть светлее серого */
+
+        /* 3. Убираем стандартный синий фокус Bootstrap */
+        .navbar-toggler:focus {
+            box-shadow: none !important;
+        }
+
+        /* 4. СОСТОЯНИЕ КОГДА МЕНЮ ОТКРЫТО (и при наведении на открытое тоже) */
+        /* Добавляем :hover в связку, чтобы он не перебивал зеленый цвет */
+        .navbar-toggler[aria-expanded="true"],
+        .navbar-toggler[aria-expanded="true"]:hover {
+            border-color: #ffdf00 !important;
+            box-shadow: 0 0 12px rgba(255, 223, 0, 0.6) !important;
+        }
+
+        /* Ссылки */
+        .nav-link {
+            color: #fff !important;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-left: 15px;
+        }
+
+        .nav-link:hover {
+            color: #ffdf00 !important;
+        }
 
         /* --- СЛАЙДЕР НА SCROLL SNAP --- */
         .slider-container {
@@ -138,8 +166,14 @@
         }
 
         /* Скрываем скроллбар */
-        .scroll-slider::-webkit-scrollbar { display: none; }
-        .scroll-slider { -ms-overflow-style: none; scrollbar-width: none; }
+        .scroll-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scroll-slider {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
 
         .scroll-slide {
             flex: 0 0 100%;
@@ -174,7 +208,8 @@
             display: flex;
             justify-content: center;
             gap: 12px;
-            margin-top: -45px; /* Накладываем поверх слайдера */
+            margin-top: -45px;
+            /* Накладываем поверх слайдера */
             position: relative;
             z-index: 5;
             padding-bottom: 35px;
@@ -186,252 +221,347 @@
             background-color: rgba(255, 255, 255, 0.4);
             border-radius: 50%;
             transition: 0.3s;
-            border: 1px solid rgba(0,0,0,0.5);
+            border: 1px solid rgba(0, 0, 0, 0.5);
         }
+
         /* Активная точка */
-		.slider-nav a.active {
-    	    background-color: #ffdf00;
+        .slider-nav a.active {
+            background-color: #ffdf00;
             transform: scale(1.4);
             box-shadow: 0 0 8px #ffdf00;
-		}
+        }
 
-		.slider-nav a {
-    	    width: 12px;
+        .slider-nav a {
+            width: 12px;
             height: 12px;
             background-color: rgba(255, 255, 255, 0.4);
             border-radius: 50%;
             transition: 0.3s;
-            border: 1px solid rgba(0,0,0,0.5);
-            outline: none; /* Убираем синюю рамку в некоторых браузерах */
-		}
+            border: 1px solid rgba(0, 0, 0, 0.5);
+            /* Убираем синюю рамку в некоторых браузерах */
+            outline: none;
+        }
 
-		.slider-nav a:hover {
+        .slider-nav a:hover {
             background-color: #ffdf00;
             transform: scale(1.3);
-		}
+        }
 
-		/* Оставляем только этот класс для подсветки */
-		.slider-nav a.active {
-    	   background-color: #ffdf00;
-    	   transform: scale(1.4);
-    	   box-shadow: 0 0 8px #ffdf00;
-		}
+        /* Оставляем только этот класс для подсветки */
+        .slider-nav a.active {
+            background-color: #ffdf00;
+            transform: scale(1.4);
+            box-shadow: 0 0 8px #ffdf00;
+        }
 
-		/* Цвет иконки бургера в темной теме */
-		.navbar-toggler-icon { fill: white; }
+        /* Цвет иконки бургера в темной теме */
+        .navbar-toggler-icon {
+            fill: white;
+        }
 
-		/* Стили для открытого меню на мобильных */
-		@media (max-width: 991px) {
-    		.navbar-collapse {
-				background: #000; /* Фон выпадающего списка */
-           		padding: 20px;
-           		margin-top: 15px;
-           		border-radius: 10px;
-           		border: 1px solid #333;
-    		}
-    		.nav-link {
-        		margin: 10px 0; /* Отступы между пунктами в столбик */
-        		font-size: 1.1rem;
-    		}
-		}
+        /* Стили для открытого меню на мобильных */
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background: #000;
+                /* Фон выпадающего списка */
+                padding: 20px;
+                margin-top: 15px;
+                border-radius: 10px;
+                border: 1px solid #333;
+            }
+
+            .nav-link {
+                margin: 10px 0;
+                /* Отступы между пунктами в столбик */
+                font-size: 1.1rem;
+            }
+        }
 
         /* Контентные блоки */
-        .section-title { 
-            border-bottom: 2px solid #333; 
-            margin-bottom: 25px; 
-            padding-bottom: 10px; 
-            color: #ffdf00; 
+        .section-title {
+            border-bottom: 2px solid #333;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            color: #ffdf00;
             font-weight: bold;
             text-transform: uppercase;
             font-size: 1.1rem;
         }
-        
-        .video-card { 
-    		background: #1a1a1a; 
-    		border: 1px solid #333; 
-    		margin-bottom: 20px; 
-    		border-radius: 10px; 
-    		overflow: hidden; 
-    		padding: 10px; /* Добавили внутренний отступ из скрипта */
-    		transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    		/* Добавляем фиксированную минимальную высоту */
-    		min-height: 274px;
-    		/* Чтобы заголовок всегда был прижат к плееру или распределялся красиво */
-    		display: flex;
-    		flex-direction: column;
-		}
 
-		.video-card:hover { 
-    		transform: translateY(-8px); 
-    		border-color: #ffdf00; /* Тот самый золотой цвет */
-    		box-shadow: 0 10px 20px rgba(255, 223, 0, 0.2); /* Золотистое свечение */
-		}
-        
+        .video-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            padding: 10px;
+            /* Добавили внутренний отступ из скрипта */
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            /* Добавляем фиксированную минимальную высоту */
+            min-height: 274px;
+            /* Чтобы заголовок всегда был прижат к плееру или распределялся красиво */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-card:hover {
+            transform: translateY(-8px);
+            /* Тот самый золотой цвет */
+            border-color: #ffdf00;
+            /* Золотистое свечение */
+            box-shadow: 0 10px 20px rgba(255, 223, 0, 0.2);
+
+        }
+
         /* Стили для заголовка видео внутри карточки */
-		.video-card h4 {
-    		margin: 10px 0 0; 
-    		font-size: 0.9rem; /* Сделал шрифт чуть крупнее для высокой карточки */ 
-    		color: #fff; 
-    		line-height: 1.4;
-    		transition: 0.3s;
-		}
+        .video-card h4 {
+            margin: 10px 0 0;
+            font-size: 0.9rem;
+            /* Сделал шрифт чуть крупнее для высокой карточки */
+            color: #fff;
+            line-height: 1.4;
+            transition: 0.3s;
+        }
 
-		.video-card:hover h4 { color: #ffdf00; } /* Заголовок тоже подсветим золотом при наведении */
+        .video-card:hover h4 {
+            color: #ffdf00;
+        }
 
-		.video-card iframe {
-    		border-radius: 5px;
-    		display: block; 
-		}
-        
+        /* Заголовок тоже подсветим золотом при наведении */
+        .video-card iframe {
+            border-radius: 5px;
+            display: block;
+        }
+
         .insta-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
         }
 
-        .insta-item { 
-            background: #252525; 
+        .insta-item {
+            display: block;
+            background: #252525;
             aspect-ratio: 1 / 1;
             border-radius: 6px;
-            transition: 0.3s;
+            border: 1px solid transparent;
+            /* Добавляем рамку заранее, чтобы не было прыжка */
+            transition: all 0.3s ease;
+            /* Плавная анимация */
             cursor: pointer;
-        }
-        .insta-item:hover { 
-            background: #333; 
-            box-shadow: inset 0 0 10px #ffdf00;
+            overflow: hidden;
+            text-decoration: none;
+            overflow: hidden;
+            /* Обязательно, чтобы зум не выходил за края */
+            position: relative;
         }
 
-		/* Создаем собственный стиль для кнопки подписки */
-		.btn-outline-success {
-    	    color: #ffdf00 !important;             /* Яркий основной текст */
-    	    border-color: #ffdf00 !important;      /* Яркая рамка */
+        .insta-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Копирует 6px от родителя */
+            border-radius: inherit; 
+            /* Плавный зум */
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+        }
+
+        /* Эффект при наведении */
+        .insta-item:hover img {
+            /* Увеличение на 10% */
+            transform: scale(1.1);
+
+        }
+
+        /* Копируем поведение YouTube-карточки */
+        .insta-item:hover {
+            /* Подъем вверх */
+            transform: translateY(-8px);
+            /* Золотая рамка */
+            border-color: #ffdf00;
+            /* Золотистое свечение */
+            box-shadow: 0 10px 20px rgba(255, 223, 0, 0.2);
+
+        }
+
+        /* Базовый стиль плейсхолдера */
+.insta-item.placeholder {
+    background: linear-gradient(90deg, #252525 25%, #333 50%, #252525 75%);
+    background-size: 200% 100%;
+    animation: skeleton-blink 1.5s infinite;
+    cursor: default;
+}
+
+/* Анимация "бегущего блика" */
+@keyframes skeleton-blink {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Отключаем трансформацию для пустых блоков */
+.insta-item.placeholder:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: transparent;
+}
+
+        /* Создаем собственный стиль для кнопки подписки */
+        .btn-outline-success {
+            color: #ffdf00 !important;
+            /* Яркий основной текст */
+            border-color: #ffdf00 !important;
+            /* Яркая рамка */
             background-color: transparent !important;
-            text-transform: uppercase;             /* Все заглавные */
-            letter-spacing: 1px;                   /* Небольшой отступ между буквами */
+            text-transform: uppercase;
+            /* Все заглавные */
+            letter-spacing: 1px;
+            /* Небольшой отступ между буквами */
             transition: 0.3s all ease !important;
-		}
+        }
 
-		/* Эффект при наведении */
-		.btn-outline-success:hover {
-           background-color: #ffdf00 !important;  /* Заливка при наведении */
-           color: #000 !important;                /* Черный текст на зеленом фоне */
-           box-shadow: 0 0 20px rgba(0, 188, 140, 0.4) !important; /* Свечение */
-		}
+        /* Эффект при наведении */
+        .btn-outline-success:hover {
+            /* Заливка при наведении */
+            background-color: #ffdf00 !important;
+            /* Черный текст на желтом фоне */
+            color: #000 !important;
+            /* Свечение */
+            box-shadow: 0 0 20px rgba(0, 188, 140, 0.4) !important;
+        }
 
         footer {
             padding: 30px 0;
             background: #000;
             border-top: 1px solid #222;
             font-size: 0.85rem;
-			flex-shrink: 0; /* Чтобы футер не сжимался */
+            /* Чтобы футер не сжимался */
+            flex-shrink: 0;
+
         }
     </style>
 </head>
+
 <body>
 
     <!-- Навигация -->
     <nav class="navbar navbar-expand-lg">
-    <div class="container">
-    <!-- Логотип -->
-	<a class="navbar-brand" href="#">
-    	<img src="images/logo.png" alt="TRUCK_LOG" class="nav-logo">
-	</a>
+        <div class="container">
+            <!-- Логотип -->
+            <a class="navbar-brand" href="#">
+                <img src="images/logo.png" alt="TRUCK_LOG" class="nav-logo">
+            </a>
 
-        <!-- Кнопка Бургера (видна только на мобильных) -->
-        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+            <!-- Кнопка Бургера (видна только на мобильных) -->
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <!-- Обертка меню -->
-        <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="#home">Главная</a></li>
-                <li class="nav-item"><a class="nav-link" href="#specs">Железо</a></li>
-                <li class="nav-item"><a class="nav-link" href="#schedule">Стримы</a></li>
-                <li class="nav-item"><a class="nav-link" href="#links">Контакты</a></li>
-		<li class="nav-item">
-    <a class="nav-link search-trigger" href="#" data-bs-toggle="modal" data-bs-target="#searchModal">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: middle; margin-top: -3px;">
-            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-        </svg>
-    </a>
-</li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<div class="content-wrapper">
-    <!-- Слайдер -->
-    <div class="slider-container">
-        <div class="scroll-slider">
-            <div class="scroll-slide" id="slide-1">
-                <img src="images/image_1.jpg" alt="W900">
-                <div class="slide-caption">Kenworth W900: Мощь хрома</div>
-            </div>
-            <div class="scroll-slide" id="slide-2">
-                <img src="images/image_2.jpg" alt="T680">
-                <div class="slide-caption">T680: Технологии будущего</div>
-            </div>
-            <div class="scroll-slide" id="slide-3">
-                <img src="images/image_3.jpg" alt="Peterbilt">
-                <div class="slide-caption">Стримы каждый вторник</div>
+            <!-- Обертка меню -->
+            <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#home">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#specs">Железо</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#schedule">Стримы</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#links">Контакты</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link search-trigger" href="#" data-bs-toggle="modal"
+                            data-bs-target="#searchModal">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                                viewBox="0 0 16 16" style="vertical-align: middle; margin-top: -3px;">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
-        
-        <!-- Кнопки-индикаторы -->
-        <div class="slider-nav">
-            <a href="#slide-1" title="Слайд 1"></a>
-            <a href="#slide-2" title="Слайд 2"></a>
-            <a href="#slide-3" title="Слайд 3"></a>
-        </div>
-    </div>
-
-    <!-- Контент -->
-<div class="container mt-2">
-    <div class="row">
-        <!-- Секция Видео -->
-        <div class="col-lg-8">
-            <h3 class="section-title">Последние прохождения</h3>
-            
-            <!-- Сетка с видео -->
-            <div class="row" id="youtube-feed">
-                Загрузка...
-            </div>
-		<!-- Кнопка подписки на YouTube -->
-	    <div class="text-center mt-0 mb-4">
-    		<a href="https://www.youtube.com/@thealenoks?sub_confirmation=1" class="btn btn-outline-success fw-bold py-2 px-4 d-inline-flex align-items-center">
-        		<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-youtube me-2" viewBox="0 0 16 16">
-            			<path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.043-.074 1.957l-.008.104-.022.26-.01.104c-.048.519-.119 1.023-.22 1.402a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z"/>
-        		</svg>
-        		ПОДПИСАТЬСЯ
-    		</a>
-</div>
-        </div> 
-
-        <!-- Секция Instagram -->
-            <div class="col-lg-4">
-                <h3 class="section-title">Instagram Feed</h3>
-                <div class="insta-grid">
-                    <div class="insta-item"></div>
-                    <div class="insta-item"></div>
-                    <div class="insta-item"></div>
-                    <div class="insta-item"></div>
-                    <div class="insta-item"></div>
-                    <div class="insta-item"></div>
+    </nav>
+    <div class="content-wrapper">
+        <!-- Слайдер -->
+        <div class="slider-container">
+            <div class="scroll-slider">
+                <div class="scroll-slide" id="slide-1">
+                    <img src="images/image_1.jpg" alt="W900">
+                    <div class="slide-caption">Kenworth W900: Мощь хрома</div>
                 </div>
-		<!-- Кнопка подписки на Instagram -->
-		<div class="text-center mt-4 mb-4">
-    		<a href="#" class="btn btn-outline-success fw-bold py-2 px-4 d-inline-flex align-items-center">
-        		<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-instagram me-2" viewBox="0 0 16 16">
-            			<path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.282.11-.705.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
-        		</svg>
-        		ПОДПИСАТЬСЯ
-    		</a>
-		</div>
+                <div class="scroll-slide" id="slide-2">
+                    <img src="images/image_2.jpg" alt="T680">
+                    <div class="slide-caption">T680: Технологии будущего</div>
+                </div>
+                <div class="scroll-slide" id="slide-3">
+                    <img src="images/image_3.jpg" alt="Peterbilt">
+                    <div class="slide-caption">Стримы каждый вторник</div>
+                </div>
+            </div>
+
+            <!-- Кнопки-индикаторы -->
+            <div class="slider-nav">
+                <a href="#slide-1" title="Слайд 1"></a>
+                <a href="#slide-2" title="Слайд 2"></a>
+                <a href="#slide-3" title="Слайд 3"></a>
+            </div>
+        </div>
+
+        <!-- Контент -->
+        <div class="container mt-2">
+            <div class="row">
+                <!-- Секция Видео -->
+                <div class="col-lg-8">
+                    <h3 class="section-title">YouTube</h3>
+
+                    <!-- Сетка с видео -->
+                    <div class="row" id="youtube-feed">
+                        Загрузка...
+                    </div>
+                    <!-- Кнопка подписки на YouTube -->
+                    <div class="text-center mt-0 mb-4">
+                        <a href="https://www.youtube.com/@thealenoks?sub_confirmation=1"
+                            class="btn btn-outline-success fw-bold py-2 px-4 d-inline-flex align-items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-youtube me-2" viewBox="0 0 16 16">
+                                <path
+                                    d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.043-.074 1.957l-.008.104-.022.26-.01.104c-.048.519-.119 1.023-.22 1.402a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z" />
+                            </svg>
+                            ПОДПИСАТЬСЯ
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <h3 class="section-title">Instagram</h3>
+                    <div id="my-insta-feed" class="insta-grid">
+                        <div class="insta-item placeholder"></div>
+                        <div class="insta-item placeholder"></div>
+                        <div class="insta-item placeholder"></div>
+                        <div class="insta-item placeholder"></div>
+                        <div class="insta-item placeholder"></div>
+                        <div class="insta-item placeholder"></div>
+                    </div>
+
+                    <div id="my-insta-feed" class="insta-grid"></div>
+
+                    <!-- Кнопка подписки на Instagram -->
+                    <div class="text-center mt-4 mb-4">
+                        <a href="#" class="btn btn-outline-success fw-bold py-2 px-4 d-inline-flex align-items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-instagram me-2" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.282.11-.705.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
+                            </svg>
+                            ПОДПИСАТЬСЯ
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
     <footer class="text-center text-muted">
         <div class="container">
             <p class="mb-1">© 2026 Alenoks. Все права защищены.</p>
@@ -439,28 +569,33 @@
         </div>
     </footer>
 
-<!-- Модальное окно поиска -->
-<div class="modal fade" id="searchModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content" style="background: #111; border: 1px solid #ffdf00; border-radius: 15px;">
-            <div class="modal-body p-4">
-                <form action="/search" method="GET">
-                    <div class="input-group">
-                        <input type="text" class="form-control border-0 bg-transparent text-white shadow-none" 
-                               placeholder="Что ищем?..." style="font-size: 1.2rem;">
-						<!-- Кнопка пока отключена -->
-                        <button class="btn border-0 text-warning" type="submit" disabled style="opacity: 0.5; cursor: not-allowed;">
-    						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-        						<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-    						</svg>
-						</button>
-                    </div>
-                    <div style="height: 1px; background: linear-gradient(90deg, transparent, #ffdf00, transparent); margin-top: 5px;"></div>
-                </form>
+    <!-- Модальное окно поиска -->
+    <div class="modal fade" id="searchModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background: #111; border: 1px solid #ffdf00; border-radius: 15px;">
+                <div class="modal-body p-4">
+                    <form action="/search" method="GET">
+                        <div class="input-group">
+                            <input type="text" class="form-control border-0 bg-transparent text-white shadow-none"
+                                placeholder="Что ищем?..." style="font-size: 1.2rem;">
+                            <!-- Кнопка пока отключена -->
+                            <button class="btn border-0 text-warning" type="submit" disabled
+                                style="opacity: 0.5; cursor: not-allowed;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div
+                            style="height: 1px; background: linear-gradient(90deg, transparent, #ffdf00, transparent); margin-top: 5px;">
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 </body>
 
@@ -472,11 +607,11 @@
 
     // 1. Клик по точкам
     navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             const targetSlide = document.querySelector(targetId);
-            
+
             slider.scrollTo({
                 left: targetSlide.offsetLeft - slider.offsetLeft,
                 behavior: 'smooth'
@@ -519,30 +654,32 @@
     const container = document.querySelector('.slider-container');
     container.addEventListener('mouseenter', stopAutoScroll);
     container.addEventListener('mouseleave', startAutoScroll);
-	container.addEventListener('touchstart', stopAutoScroll);
+    container.addEventListener('touchstart', stopAutoScroll);
     container.addEventListener('touchend', startAutoScroll);
 
     // Автофокус в поле поиска при открытии окна
     const searchModal = document.getElementById('searchModal');
     searchModal.addEventListener('shown.bs.modal', () => {
-    searchModal.querySelector('input').focus();
-});
+        searchModal.querySelector('input').focus();
+    });
+</script>
 
-const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.youtube.com%2Ffeeds%2Fvideos.xml%3Fchannel_id%3DUCEEOqyw2t3iozjRkAXI07UA`
+<script>
+    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.youtube.com%2Ffeeds%2Fvideos.xml%3Fchannel_id%3DUCEEOqyw2t3iozjRkAXI07UA`
 
     fetch(apiUrl)
-    .then(res => res.json())
-    .then(data => {
-        const container = document.getElementById('youtube-feed');
-        if (data.status === 'ok' && data.items) {
-            let html = '';
-            // Берем 2 последних видео
-            data.items.slice(0, 2).forEach(item => {
-                const videoId = item.guid.split(':').pop();
-                const embedUrl = `https://youtube.com/embed/${videoId}`;
-                
-                // Каждое видео оборачиваем в col-md-6 (это даст 2 видео в ряд)
-                html += `
+        .then(res => res.json())
+        .then(data => {
+            const container = document.getElementById('youtube-feed');
+            if (data.status === 'ok' && data.items) {
+                let html = '';
+                // Берем 2 последних видео
+                data.items.slice(0, 2).forEach(item => {
+                    const videoId = item.guid.split(':').pop();
+                    const embedUrl = `https://youtube.com/embed/${videoId}`;
+
+                    // Каждое видео оборачиваем в col-md-6 (это даст 2 видео в ряд)
+                    html += `
     <div class="col-md-6 mb-1">
         <div class="video-card">
             <iframe width="100%" height="200" 
@@ -552,11 +689,45 @@ const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.y
             <h4>${item.title}</h4>
         </div>
     </div>`;
-            });
-            container.innerHTML = html;
-        }
-    })
-    .catch(err => console.error('Ошибка:', err.message));
+                });
+                container.innerHTML = html;
+            }
+        })
+        .catch(err => console.error('Ошибка:', err.message));
 </script>
+
+<script>
+    async function loadInstaFeed() {
+        const apiUrl = 'https://feeds.behold.so/N0ow7p1N3HEmBvi926bf';
+        // Находим все наши заготовленные квадраты
+        const items = document.querySelectorAll('#my-insta-feed .insta-item');
+
+        try {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+            const posts = data.posts;
+
+            posts.slice(0, 6).forEach((post, index) => {
+                if (items[index]) {
+    items[index].classList.remove('placeholder');
+    items[index].innerHTML = `
+        <img src="${post.sizes.medium.mediaUrl}" 
+             alt="Instagram post" 
+             style="opacity: 0; transition: opacity 0.5s ease;" 
+             onload="this.style.opacity='1'">
+    `;
+    items[index].onclick = () => window.open(post.permalink, '_blank');
+                }
+            });
+        } catch (error) {
+            console.error('Ошибка:', error);
+            // Если ошибка, квадраты так и останутся просто темными блоками
+        }
+    }
+
+    loadInstaFeed();
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.bundle.min.js"></script>
+
 </html>
