@@ -295,42 +295,65 @@
             border-radius: 10px;
             overflow: hidden;
             padding: 10px;
-            /* Добавили внутренний отступ из скрипта */
-            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            /* Добавляем фиксированную минимальную высоту */
             min-height: 274px;
-            /* Чтобы заголовок всегда был прижат к плееру или распределялся красиво */
             display: flex;
             flex-direction: column;
+
+            /* НАЧАЛЬНОЕ СОСТОЯНИЕ ДЛЯ АНИМАЦИИ ПРИ ЗАГРУЗКЕ */
+            opacity: 0;
+            transform: translateY(20px);
+            /* Соединяем ваши старые транзиции и новые */
+            transition:
+                transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.5s ease-out,
+                border-color 0.3s,
+                box-shadow 0.3s;
         }
 
-        .video-card:hover {
+        /* СОСТОЯНИЕ ПОСЛЕ ЗАГРУЗКИ */
+        .video-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ВАШ HOVER (теперь он будет работать поверх видимой карточки) */
+        .video-card.visible:hover {
             transform: translateY(-8px);
-            /* Тот самый золотой цвет */
             border-color: #ffdf00;
-            /* Золотистое свечение */
             box-shadow: 0 10px 20px rgba(255, 223, 0, 0.2);
-
         }
 
-        /* Стили для заголовка видео внутри карточки */
+        /* Остальные стили (h4, iframe) оставляем без изменений */
         .video-card h4 {
             margin: 10px 0 0;
             font-size: 0.9rem;
-            /* Сделал шрифт чуть крупнее для высокой карточки */
             color: #fff;
             line-height: 1.4;
             transition: 0.3s;
         }
 
-        .video-card:hover h4 {
+        .video-card.visible:hover h4 {
             color: #ffdf00;
         }
 
-        /* Заголовок тоже подсветим золотом при наведении */
         .video-card iframe {
             border-radius: 5px;
             display: block;
+        }
+
+        #youtube-feed {
+            /* Резервируем место под высоту карточек, чтобы кнопка сразу была внизу */
+            min-height: 298px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* На мобильных устройствах видео идут друг под другом (в 2 ряда) */
+        @media (max-width: 767px) {
+            #youtube-feed {
+                /* 294px * 2 */
+                min-height: 588px;
+            }
         }
 
         .insta-grid {
@@ -361,7 +384,7 @@
             height: 100%;
             object-fit: cover;
             /* Копирует 6px от родителя */
-            border-radius: inherit; 
+            border-radius: inherit;
             /* Плавный зум */
             transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -386,29 +409,30 @@
         }
 
         /* Базовый стиль плейсхолдера */
-.insta-item.placeholder {
-    background: linear-gradient(90deg, #252525 25%, #333 50%, #252525 75%);
-    background-size: 200% 100%;
-    animation: skeleton-blink 1.5s infinite;
-    cursor: default;
-}
+        .insta-item.placeholder {
+            background: linear-gradient(90deg, #252525 25%, #333 50%, #252525 75%);
+            background-size: 200% 100%;
+            animation: skeleton-blink 1.5s infinite;
+            cursor: default;
+        }
 
-/* Анимация "бегущего блика" */
-@keyframes skeleton-blink {
-    0% {
-        background-position: 200% 0;
-    }
-    100% {
-        background-position: -200% 0;
-    }
-}
+        /* Анимация "бегущего блика" */
+        @keyframes skeleton-blink {
+            0% {
+                background-position: 200% 0;
+            }
 
-/* Отключаем трансформацию для пустых блоков */
-.insta-item.placeholder:hover {
-    transform: none;
-    box-shadow: none;
-    border-color: transparent;
-}
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        /* Отключаем трансформацию для пустых блоков */
+        .insta-item.placeholder:hover {
+            transform: none;
+            box-shadow: none;
+            border-color: transparent;
+        }
 
         /* Создаем собственный стиль для кнопки подписки */
         .btn-outline-success {
@@ -665,7 +689,7 @@
 </script>
 
 <script>
-    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.youtube.com%2Ffeeds%2Fvideos.xml%3Fchannel_id%3DUCEEOqyw2t3iozjRkAXI07UA`
+    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.youtube.com%2Ffeeds%2Fvideos.xml%3Fchannel_id%3DUCEEOqyw2t3iozjRkAXI07UA`;
 
     fetch(apiUrl)
         .then(res => res.json())
@@ -678,21 +702,35 @@
                     const videoId = item.guid.split(':').pop();
                     const embedUrl = `https://youtube.com/embed/${videoId}`;
 
-                    // Каждое видео оборачиваем в col-md-6 (это даст 2 видео в ряд)
                     html += `
-    <div class="col-md-6 mb-1">
-        <div class="video-card">
-            <iframe width="100%" height="200" 
-                src="${embedUrl}" 
-                frameborder="0" allowfullscreen>
-            </iframe>
-            <h4>${item.title}</h4>
-        </div>
-    </div>`;
+                    <div class="col-md-6 mb-1">
+                        <div class="video-card">
+                            <iframe width="100%" height="200" 
+                                src="${embedUrl}" 
+                                frameborder="0" allowfullscreen>
+                            </iframe>
+                            <h4>${item.title}</h4>
+                        </div>
+                    </div>`;
                 });
+
                 container.innerHTML = html;
-            }
-        })
+
+                // Находим все созданные карточки
+                const cards = container.querySelectorAll('.video-card');
+
+                // Исправленная логика анимации
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        cards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.classList.add('visible');
+                            }, index * 150);
+                        });
+                    });
+                });
+            } // Закрываем if (data.status...)
+        }) // Закрываем .then(data => ...)
         .catch(err => console.error('Ошибка:', err.message));
 </script>
 
@@ -709,14 +747,14 @@
 
             posts.slice(0, 6).forEach((post, index) => {
                 if (items[index]) {
-    items[index].classList.remove('placeholder');
-    items[index].innerHTML = `
+                    items[index].classList.remove('placeholder');
+                    items[index].innerHTML = `
         <img src="${post.sizes.medium.mediaUrl}" 
              alt="Instagram post" 
              style="opacity: 0; transition: opacity 0.5s ease;" 
              onload="this.style.opacity='1'">
     `;
-    items[index].onclick = () => window.open(post.permalink, '_blank');
+                    items[index].onclick = () => window.open(post.permalink, '_blank');
                 }
             });
         } catch (error) {
