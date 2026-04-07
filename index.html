@@ -25,7 +25,46 @@
             /* Высота во весь экран */
             margin: 0;
         }
+         /* --- БАЗОВЫЕ СТИЛИ (для всех устройств) --- */
+        #youtube-feed {
+            min-height: 298px;
+            /* Резерв для 1 ряда видео (ПК) */
+            display: flex;
+            flex-wrap: wrap;
+        }
 
+        /* --- ПК И ПЛАНШЕТЫ (от 992px и выше) --- */
+        @media (min-width: 992px) {
+            .navbar-nav {
+                flex-direction: row;
+            }
+        }
+
+        /* --- МОБИЛЬНЫЕ И ПЛАНШЕТЫ (до 991px) --- */
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background: #111;
+                /* Тёмный фон для меню */
+                border: 1px solid #333;
+                border-radius: 12px;
+                margin-top: 10px;
+                padding: 15px;
+            }
+
+            .nav-link {
+                margin: 10px 0;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* --- ТОЛЬКО МОБИЛЬНЫЕ (до 767px) --- */
+        @media (max-width: 767px) {
+            #youtube-feed {
+                min-height: 588px;
+                /* Резерв для 2 видео в столбик */
+            }
+        }
+        
         .content-wrapper {
             flex: 1 0 auto;
         }
@@ -52,37 +91,7 @@
             display: flex;
         }
 
-        /* На больших экранах (ПК) - в ряд */
-        @media (min-width: 992px) {
-            .navbar-nav {
-                flex-direction: row;
-            }
-        }
-
-        /* На маленьких экранах (ТЕЛЕФОНЫ) - в столбик с отступами */
-        @media (max-width: 991px) {
-            .navbar-collapse {
-                background: #111;
-                /* Чуть светлее основного фона для объема */
-                border: 1px solid #333;
-                border-radius: 12px;
-                margin-top: 10px;
-                padding: 15px;
-            }
-
-            .nav-link {
-                border-bottom: 1px solid #222;
-                /* Разделительные линии */
-                padding: 12px 0 !important;
-                margin: 0 !important;
-            }
-
-            .nav-link:last-child {
-                border-bottom: none;
-            }
-
-            /* Убираем линию у последнего пункта */
-        }
+       
 
         /* Основная панель */
         .navbar {
@@ -259,24 +268,6 @@
             fill: white;
         }
 
-        /* Стили для открытого меню на мобильных */
-        @media (max-width: 991px) {
-            .navbar-collapse {
-                background: #000;
-                /* Фон выпадающего списка */
-                padding: 20px;
-                margin-top: 15px;
-                border-radius: 10px;
-                border: 1px solid #333;
-            }
-
-            .nav-link {
-                margin: 10px 0;
-                /* Отступы между пунктами в столбик */
-                font-size: 1.1rem;
-            }
-        }
-
         /* Контентные блоки */
         .section-title {
             border-bottom: 2px solid #333;
@@ -339,21 +330,6 @@
         .video-card iframe {
             border-radius: 5px;
             display: block;
-        }
-
-        #youtube-feed {
-            /* Резервируем место под высоту карточек, чтобы кнопка сразу была внизу */
-            min-height: 298px;
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        /* На мобильных устройствах видео идут друг под другом (в 2 ряда) */
-        @media (max-width: 767px) {
-            #youtube-feed {
-                /* 294px * 2 */
-                min-height: 588px;
-            }
         }
 
         .insta-grid {
